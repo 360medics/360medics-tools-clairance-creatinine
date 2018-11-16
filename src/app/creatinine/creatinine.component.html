@@ -1,7 +1,7 @@
 <div class="content">
 
   <h1 class="tool-name">Calcul de la clairance de la créatinine</h1>
-
+  <!-- <div class="error" *ngIf="error">{{ error }}</div> -->
   <div class="container">
     <div class="left">
       <label>Année de naissance</label>
@@ -13,9 +13,11 @@
       <label>Origine afro-américaine</label>
     </div>
 
+
+
     <div class="right">
-      <input type="text" [value]="formData.birthYear" (change)="setAge(birthYearInput.value)" #birthYearInput>
-      <input type="text" [(ngModel)]="formData.age">
+      <input type="number" [(ngModel)]="formData.birthYear" (keyup)="setAge($event)">
+      <input type="number" [(ngModel)]="formData.age" (keyup)="setBirthYear($event)">
 
       <div class="flex-row">
         <input [(ngModel)]="formData.weight" type="text" class="right-five">
@@ -44,12 +46,12 @@
       </div>
 
       <div class="flex-row">
-        <input [(ngModel)]="formData.origin" type="radio" [value]="'yes'" (click)="onRadioButtonClicked('yes')">Oui
-        <input [(ngModel)]="formData.origin" type="radio" [value]="'no'" (click)="onRadioButtonClicked('no')">Non
+        <input [(ngModel)]="formData.originAfro" type="radio" value="yes" (click)="onRadioButtonClicked('yes')">Oui
+        <input [(ngModel)]="formData.originAfro" type="radio" value="no" (click)="onRadioButtonClicked('no')">Non
       </div>
 
       <div class="flex-row">
-        <button (click)="calculate()" class="btn btn-success">Calculer</button>
+        <button (click)="compute()" class="btn btn-success">Calculer</button>
         <button (click)="reset()" class="btn btn-reset">Réinitialiser</button>
       </div>
 

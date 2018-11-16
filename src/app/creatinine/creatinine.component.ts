@@ -1,213 +1,131 @@
-import { Component, OnInit, ElementRef, AfterViewInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { clairanceCalculator, ClairanceInput } from './calculator';
-import { toolsClairanceCreatinineCompute } from './toolsClairanceCreatinineCompute';
-import { and } from '@angular/router/src/utils/collection';
-import { template } from '@angular/core/src/render3';
+import { Component, OnInit, AfterViewInit }     from '@angular/core';
+import { ElementRef, ViewChild }                from '@angular/core';
+import { NgForm }                               from '@angular/forms';
+// import { Calculator, CalculatorInput }          from './calculator';
+import { ImcDataType, ImcCalculator }           from '../components/calculator';
 
 @Component({
   selector: 'app-creatinine',
   templateUrl: './creatinine.component.html',
   styleUrls: ['./creatinine.component.scss']
 })
-export class CreatinineComponent implements OnInit, AfterViewInit {
-  formData: ClairanceInput = {
-    birthYear: null,
-    year: 2018,
-    age: null,
-    weight: null,
-    height: null,
-    creatinimie: null,
-    creatinimieType: null,
-    sex: null,
-    origin: null,
-    res: null,
-    resultat: null,
+export class CreatinineComponent
+{
+    currentYear: number = (new Date()).getFullYear()
 
-    cockroft: '',
-    m1: null,
-    m2: null,
-    coef: null,
-    createUnite: null,
-    creat: null,
-    creaumol: null,
-    creat2: null,
-    MDRD: null,
-    slidePercCock: null,
-    slideClassCock: null,
-    paraCock: null,
-    slidePercMdrd: null,
-    slideClassMdrd: null,
-    paraMdrd: null,
-  };
-  //IMC
-  // imc_height: any;
-  // imc_weight: any;
-  imc: any;
-  percent: any;
-  seuilMin: any;
-  seuilMax: any;
-  value: any;
-  percentMin: any;
-  percentMax: any;
-  legendClassImc: any;
-  slidePercImc: any;
-  // to_info_clair: any;
-  // globalHeight: any;
-  // globalBMI: any;
-  // scope: any;
-  // calculateIMC: any;
+    public formData: ImcDataType = {
+        birthYear: 1985,
+        age: 33,
+        weight: 65,
+        height: 194,
+        creatinimie: 12,
+        creatinimieType: 'µmol/L',
+        sex: 'H',
+        originAfro: 'no',
+    }
 
-  @ViewChild('form') form: NgForm;
-
-  constructor(private el: ElementRef) {
+    cockroft: '';
+    m1: null;
+    m2: null;
+    coef: null;
+    createUnite: null;
+    creat: null;
+    creaumol: null;
+    creat2: null;
+    mdrd: null;
+    slidePercCock: null;
+    slideClassCock: null;
+    paraCock: null;
+    slidePercMdrd: null;
+    slideClassMdrd: null;
+    paraMdrd: null;
 
     //IMC
-    // this.imc_height = '';
-    // this.imc_weight = '';
-    this.imc = '';
-    this.percent = '';
-    this.seuilMin = '';
-    this.seuilMax = '';
-    this.value = '';
-    this.percentMin = '';
-    this.percentMax = '';
-    this.legendClassImc = '';
-    this.slidePercImc = '';
-    // this.to_info_clair = '';
-    // this.globalHeight = '';
-    // this.globalBMI = '';
-    // this.scope = '';
-    // this.calculateIMC = '';
+    // imc_height: any;
+    // imc_weight: any;
+    imc: any;
+    percent: any;
+    seuilMin: any;
+    seuilMax: any;
+    value: any;
+    percentMin: any;
+    percentMax: any;
+    legendClassImc: any;
+    slidePercImc: any;
+    // to_info_clair: any;
+    // globalHeight: any;
+    // globalBMI: any;
+    // scope: any;
+    // calculateIMC: any;
+
+  @ViewChild('form') form: NgForm;
+  error: string;
+
+  constructor(private el: ElementRef)
+  {
+      // this.reset()
+    // this.imc = '';
+    // this.percent = '';
+    // this.seuilMin = '';
+    // this.seuilMax = '';
+    // this.value = '';
+    // this.percentMin = '';
+    // this.percentMax = '';
+    // this.legendClassImc = '';
+    // this.slidePercImc = '';
   }
 
-  ngOnInit() {
+  reset()
+  {
+    for (let prop in this.formData) {
+        this.formData[prop] = null
+    }
 
+    this.formData.year = (new Date()).getFullYear()
   }
 
-  ngAfterViewInit() {
+  setAge(e: KeyboardEvent)
+  {
+      let year = e.target.value
 
-  }
-
-  onClick(e) {
-    e.preventDefault()
-    console.log(e);
-  }
-
-  reset() {
-    this.formData.birthYear = null;
-    this.formData.age = null;
-    this.formData.creatinimie = null;
-    this.formData.creatinimieType = null;
-    this.formData.sex = null;
-    this.formData.origin = null;
-    this.formData.res = null;
-    this.formData.resultat = null;
-    this.formData.weight = null;
-    this.formData.height = null;
-    //Ajouter variables IMC
-  }
-
-  calculate() {
-    //this.res = parseFloat(this.birthYear) + parseFloat(this.age);
-    //this.res = 2018 - parseFloat(this.birthYear);
-    this.formData.res = 2018 - this.formData.birthYear;
-  }
-
-  onRadioButtonClicked(value) {
-    this.formData.origin = value;
-
-    const radioButtons = this.el.nativeElement.querySelectorAll('input[type=radio]');
-    radioButtons.forEach(element => {
-      if (element.value !== this.formData.origin) {
-        element.checked = false;
+      if (year.toString().length !== 4) {
+          this.error = 'Year must be...'
+          return;
       }
-    });
+
+      this.formData.age = this.formData.year - this.formData.birthYear;
   }
 
-  // onClick2() {
-  //   let result = clairanceCalculator({
-  //     birthYear: this.birthYear,
-  //     weight: this.weight,
-  //     sex: this.sex
-  //   })
+  setBirthYear(e: KeyboardEvent)
+  {
+      let age = e.target.value
+      this.formData.birthYear = this.formData.year - this.formData.age;
+  }
+
+  compute()
+  {
+      const calculator = new ImcCalculator()
+
+      let imcResult = calculator.compute(this.formData)
+      console.log(imcResult)
+  }
+
+  // onRadioButtonClicked(value: 'yes'|'no')
+  // {
+  //     this.formData.originAfro = value;
+  //
+  //     const radioButtons = this.el.nativeElement.querySelectorAll('input[type=radio]')
+  //
+  //     radioButtons.forEach(element => {
+  //     if (element.value !== this.formData.originAfro) {
+  //             element.checked = false;
+  //         }
+  //     })
   // }
 
-  // setOld(value: any) {
-  //   this.formData.birthYear = value;
-
-  //   if (+this.formData.birthYear === 15) {
-  //     this.formData.age = 30;
-  //   }
-  // }
-
-  setAge(value: any) {
-    this.formData.birthYear = value;
-    this.formData.age = this.formData.year - this.formData.birthYear;
-  }
-
-  toolsIMCCompute(height, weight) {
-
-    height = height / 100;
-    this.imc = weight / (height * height);
-    this.imc = this.roundNumberWithTwoDigits(this.imc);
-
-    //Interprétation IMC
-    switch (this.imc) {
-      case this.imc <= 16.5:
-        this.legendClassImc = 'L1';
-        this.slidePercImc = this.calcPercSlideIMC(this.imc, 0, 16.5, 0, 14);
-
-      case this.imc <= 18.5:
-        this.legendClassImc = 'L2';
-        this.slidePercImc = this.calcPercSlideIMC(this.imc, 16.5, 18.5, 15, 21);
-
-      case this.imc <= 25:
-        this.legendClassImc = 'L3';
-        this.slidePercImc = this.calcPercSlideIMC(this.imc, 18.5, 25, 22, 37);
-
-      case this.imc <= 30:
-        this.legendClassImc = 'L4';
-        this.slidePercImc = this.calcPercSlideIMC(this.imc, 25, 30, 37.5, 52);
-
-      case this.imc <= 35:
-        this.legendClassImc = 'L5';
-        this.slidePercImc = this.calcPercSlideIMC(this.imc, 30, 35, 53, 67.5);
-
-      case this.imc <= 40:
-        this.legendClassImc = 'L6';
-        this.slidePercImc = this.calcPercSlideIMC(this.imc, 35, 40, 68.5, 83);
-
-      case this.imc > 40:
-        this.legendClassImc = 'L7';
-        this.slidePercImc = this.calcPercSlideIMC(this.imc, 40, 45, 84, 98);
-
-      default:
-        this.legendClassImc = 0;
-    }
-
-    return this.imc;
-    return this.legendClassImc;
-    return this.slidePercImc;
-
-  }
-
-  roundNumberWithTwoDigits(percent) {
-    return Number.parseFloat(percent).toFixed(2);
-  }
-
-  calcPercSlideIMC(imc, seuilMin, seuilMax, percentMin, percentMax) {
-    this.percent = this.roundNumberWithTwoDigits((this.imc - this.seuilMin) / (this.seuilMax - this.seuilMin));
-    this.value = this.percentMin + (this.percent * (this.percentMax - this.percentMin));
-
-    if (this.value > 98) {
-      this.value = 98;
-    }
-    return this.value;
-  }
-
-  toolsClairanceCreatinineCompute(formData: ClairanceInput) {
-   
+  toolsClairanceCreatinineCompute(formData: ClairanceInput)
+  {
+      
     //Calcul de l'année de naissance selon l'âge saisi
 
     // COCKROFT FORMULE 1 (creatinimie en mg/dL)
@@ -249,7 +167,7 @@ export class CreatinineComponent implements OnInit, AfterViewInit {
 
     formData.MDRD = 186 * Math.pow((formData.creat2 * 0.0113), -1.154) * Math.pow(formData.age, -0.203) * formData.m1 * formData.m2;
 
-    // Interpretations cockroft: 
+    // Interpretations cockroft:
     formData.slidePercCock = (formData.cockroft / 120) * 100;
     if (formData.slidePercCock < 10) {
       formData.slidePercCock = 10;
