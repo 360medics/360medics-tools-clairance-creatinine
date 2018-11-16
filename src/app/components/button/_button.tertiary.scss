@@ -1,0 +1,18 @@
+@import "../../../theme/_mixins";
+@import "../../../theme/_variables";
+
+:host[tertiary] {
+    button {
+
+        color: colors(whitesmoke);
+        background-color: color(tertiary);
+        border: 1px solid color(tertiary);
+
+        &:hover {
+            background-color: color(tertiary-hover);
+        }
+        &:active {
+            background-color: color(tertiary-hover);
+        }
+    }
+}

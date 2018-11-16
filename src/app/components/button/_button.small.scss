@@ -1,0 +1,11 @@
+@import "../../../theme/_mixins";
+@import "../../../theme/_variables";
+
+:host[small] {
+    
+    button {
+        font-size: $baseFontSize - 1px;
+        padding: 5px 10px;
+        @include borderRadius(1px);
+    }
+}

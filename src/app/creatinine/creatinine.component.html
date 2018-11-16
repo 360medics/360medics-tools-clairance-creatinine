@@ -1,0 +1,137 @@
+<div class="content">
+
+  <h1 class="tool-name">Calcul de la clairance de la créatinine</h1>
+
+  <div class="container">
+    <div class="left">
+      <label>Année de naissance</label>
+      <label>Âge</label>
+      <label>Poids</label>
+      <label>Taille</label>
+      <label>Créatinimie</label>
+      <label>Sexe</label>
+      <label>Origine afro-américaine</label>
+    </div>
+
+    <div class="right">
+      <input type="text" [value]="formData.birthYear" (change)="setAge(birthYearInput.value)" #birthYearInput>
+      <input type="text" [(ngModel)]="formData.age">
+
+      <div class="flex-row">
+        <input [(ngModel)]="formData.weight" type="text" class="right-five">
+        <label class="border-padding">kg</label>
+      </div>
+
+      <div class="flex-row">
+        <input [(ngModel)]="formData.height" type="text" class="right-five">
+        <label class="border-padding">cm</label>
+      </div>
+
+      <div class="flex-row">
+        <input type="text" [(ngModel)]="formData.creatinimie" class="right-five">
+
+        <select [(ngModel)]="formData.creatinimieType">
+          <option value="µmol/L">µmol/L</option>
+          <option value="mg/L">mg/L</option>
+        </select>
+      </div>
+
+      <div class="flex-row">
+        <select [(ngModel)]="formData.sex">
+          <option value="H">Hommme</option>
+          <option value="F">Femme</option>
+        </select>
+      </div>
+
+      <div class="flex-row">
+        <input [(ngModel)]="formData.origin" type="radio" [value]="'yes'" (click)="onRadioButtonClicked('yes')">Oui
+        <input [(ngModel)]="formData.origin" type="radio" [value]="'no'" (click)="onRadioButtonClicked('no')">Non
+      </div>
+
+      <div class="flex-row">
+        <button (click)="calculate()" class="btn btn-success">Calculer</button>
+        <button (click)="reset()" class="btn btn-reset">Réinitialiser</button>
+      </div>
+
+    </div>
+
+
+  </div>
+
+  <div class="result-box">
+
+    <div class="flex-row">
+      <p>IMC : </p>
+      <input type="text">
+      <p>(kg/m²)</p>
+    </div>
+
+    <div id="bar">
+      <div class="case1">
+        <span class="left">0</span>
+      </div>
+      <div class="case2">
+        <span class="left-middle">16,5</span>
+      </div>
+      <div class="case3">
+        <span class="left-middle">18,5</span>
+      </div>
+      <div class="case4">
+        <span class="middle">25</span>
+      </div>
+      <div class="case5">
+        <span class="middle">30</span>
+      </div>
+      <div class="case6">
+        <span class="middle">35</span>
+      </div>
+      <div class="case7">
+        <span class="middle">40</span>
+        <span class="right">>45</span>
+      </div>
+    </div>
+
+    <div class="flex-row">
+      <div class="one">
+        Sous-poids
+      </div>
+      <div class="two">
+        Maigreur
+      </div>
+      <div class="three">
+        Normal
+      </div>
+      <div class="four">
+        Surpoids
+      </div>
+      <div class="five">
+        Obésité modérée
+      </div>
+      <div class="six">
+        Obésité sévère
+      </div>
+      <div class="seven">
+        Obésité morbide
+      </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="flex-row">
+      <p>Cockroft & Gault :</p>
+      <input type="text">
+      <p>(ml/min/1.73m²)</p>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="flex-row">
+      <p>MDRD :</p>
+      <input type="text">
+      <p>(ml/min/1.73m²)</p>
+    </div>
+  </div>
+
+
+
+</div>

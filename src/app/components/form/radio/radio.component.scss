@@ -1,0 +1,62 @@
+@import "../../../../theme/_mixins";
+@import "../../../../theme/_variables";
+
+.radio {
+    cursor: pointer;
+    display: flex;
+    flex-direction: rows;
+    align-items: center;
+    margin-bottom: 8px;
+
+    &.standalone {
+        margin-bottom: 0px;
+    }
+
+    $knobWidth: 16px;
+    $animSpeed: 0.15s;
+
+    .knob {
+        position: relative;
+        width: $knobWidth;
+        min-width: $knobWidth;
+        height: $knobWidth;
+        border: 1px solid border(gray);
+        background-color: color(white);
+        @include borderRadius(50%);
+        @include transition(border-color ease $animSpeed, background-color ease $animSpeed);
+
+        &:after {
+            width: .5rem;
+            height: .5rem;
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate3d(-50%,-50%,0);
+            background-color: color(white);
+            @include borderRadius(50%);
+            @include transition(background-color ease $animSpeed);
+        }
+    }
+
+    .label {
+        margin-left: 8px;
+        line-height: 1.2em;
+    }
+}
+
+.radio:not(.selected):hover {
+    .knob:not(.selected),
+     {
+        background-color: #fbfbfb;
+        &:after { background-color: #fbfbfb }
+    }
+}
+
+.radio.selected {
+    .knob {
+        &:after {
+            background-color: color(primary);
+        }
+    }
+}

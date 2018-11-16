@@ -1,0 +1,6 @@
+<div class="toast" *ngIf="toaster.isVisible()" (click)="toaster.dismiss($event)">
+    <div class="toast-inner">
+        <span class="toast-content" [innerHTML]="toaster.getContents()"></span>
+        <a class="toast-close" (click)="toaster.dismiss($event)" href=""><i class="fal fa-times"></i></a>
+    </div>
+</div>

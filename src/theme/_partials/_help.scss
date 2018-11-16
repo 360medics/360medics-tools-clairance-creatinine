@@ -1,0 +1,23 @@
+@import "../_variables";
+
+.help-directive {
+    position: absolute;
+    top: 4px;
+
+    padding: 8px;
+
+    color: #f9f9f9;
+    background-color: colors(blue);
+    font-size: 12px;
+    font-weight: bold;
+
+    line-height: 1.2em;
+    // max-width: 210px;
+    // flex-shrink: 1;
+    // flex-grow: 1;
+    
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    box-shadow: 0 0 7px #eee;
+}

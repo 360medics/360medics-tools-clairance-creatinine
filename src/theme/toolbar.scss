@@ -1,0 +1,29 @@
+@import "_mixins";
+@import "_variables";
+
+.toolbar {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 24px;
+    align-items: center;
+
+    > app-button {
+        margin-right: 8px;
+    }
+
+    > .toolbar-group {
+        display: flex;
+        flex-direction: row;
+
+        &.group-left {
+            margin-right: auto;
+        }
+        &.group-right {
+            margin-left: auto;
+        }
+
+        > app-button {
+            margin-right: 8px;
+        }
+    }
+}

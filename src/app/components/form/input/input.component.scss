@@ -1,0 +1,111 @@
+@import "../../../../theme/_mixins";
+@import "../../../../theme/_variables";
+@import "../../../../theme/_partials/_formshared";
+
+@mixin validCheckboxAfter() {
+    &:after {
+        display: block;
+        content: '';
+        height: .25rem;
+        width: .5rem;
+        position: absolute;
+        top: 18px;
+        right: 6px;
+        transform: translate3d(-50%,-50%,0) rotate(-45deg);
+        border-bottom: 2px solid color(green);
+        border-left: 2px solid color(green);
+        @include transition(border-color ease 0.3s);
+    }
+}
+
+@mixin invalidCrossAfter() {
+    &:after {
+        position: absolute;
+        right: 10px;
+        width: 12px;
+        height: 12px;
+        line-height: 14px;
+        font-size: 32px;
+        top: 8px;
+        content: "\2A2F";
+        color: color(primary);
+    }
+    &:before {
+        // transform: rotate(45deg);
+    }
+    &:after {
+        // transform: rotate(-45deg);
+    }
+}
+
+:host[fullwidth] {
+    width: 100%;
+    @include boxSizing(border-box);
+}
+:host[hidden]
+{
+    height: 0px;
+    margin: 0px;
+    padding: 0px;
+    display: none;
+}
+
+.input-container {
+    position: relative;
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"] {
+        border: 1px solid colors(smoke);
+        background-color: colors(white);
+
+        &[disabled] {
+            background-color: colors(whitesmoke);
+        }
+        
+        color: inherit;
+        min-width: 230px;
+        padding: 10px 8px;
+        font-size: $baseFontSize;
+        // font-size: $baseFontSize + 1;
+        @include borderRadius(2px);
+        @include transition(border ease 0.2s, box-shadow ease-in-out 0.2s, background ease 0.2s);
+
+        @include inputPlaceholder {
+            color: #c6c7ca;
+        }
+
+        &:focus {
+            border-color: colors(input-blue);
+        }
+
+        &.has-validation {
+            padding-right: 24px;
+        }
+    }
+}
+
+:host[fullwidth] {
+    .input-container {
+        width: 100%;
+        input {
+            width: 100%;
+            @include boxSizing(border-box);
+        }
+    }
+
+}
+
+
+.control.valid {
+    .input-container {
+        @include validCheckboxAfter();
+    }
+}
+
+.control.invalid {
+    .input-container {
+        @include invalidCrossAfter();
+    }
+}

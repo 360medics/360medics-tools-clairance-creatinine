@@ -1,0 +1,162 @@
+@import "../_variables";
+
+// the padding on the row on left and right
+// padding left/right Xpx is compensated by margin-left: -X, margin-right -Xpx
+
+.table {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    // overflow: hidden; /* was overflow: hidden... BUT, thhe dropdown CSS absolute bug was here... and clipping */
+}
+
+.table .row {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    border-bottom: 1px solid colors(ceeilight);
+    border: 1px solid transparent;
+    // @include transition(background-color ease 0.1s);
+    // margin-top: -1px;
+
+    &.selected {
+        background-color: colors(whitesmoke);
+    }
+    &:hover:not(.selected, [droppable]) {
+        background-color: colors(whitesmoke);
+    }
+    &.selected:hover {
+        background-color: colors(whitesmoke);
+    }
+    &[droppable]:hover:not(.ui-droppable-active) {
+        background-color: colors(whitesmoke);
+    }
+    &.ui-droppable-active:hover {
+        background-color: colors(selection-blue);
+        border: 1px solid colors(selection-blue-border);
+    }
+
+    &.header {
+        .row {
+            &:hover {
+                background-color: none;
+            }
+        }
+
+        .cell {
+            color: colors(gray);
+
+            .sorter {
+                display: flex;
+                position: relative;
+                top: -3px;
+                flex-direction: column;
+                height: 16px;
+                .fas {
+                    display: flex;
+                }
+                .fas.fa-caret-up {
+                    position: relative;
+                    top: 1px;
+                }
+                .sort-light {
+                    color: #d8d8d8;
+                }
+            }
+        }
+    }
+
+    &.subrow {
+        display: flex;
+        flex: 0 0 100%;
+        flex-direction: row;
+        align-items: center;
+        padding-left: 24px;
+    }
+}
+
+.table .row .cell {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-basis: 0;
+    padding: 8px 0;
+    margin-right: 10px;
+
+    &.cell-as-rows {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    &.main {
+        .subtitle {
+            color: colors(gray);
+            font-size: $baseFontSize - 1px;
+            margin-top: 4px;
+        }
+    }
+    &.ellipsis {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    &.lesser {
+        min-width: 120px;
+        max-width: 170px;
+    }
+    &.mini, &.checkbox {
+        max-width: 24px;
+    }
+    &.tiny {
+        max-width: 16px;
+    }
+
+    &.center {
+        text-align: center;
+        justify-content: center;
+    }
+
+    &.actions {
+        .fa-ellipsis-h-alt {
+            font-size: 18px;
+        }
+    }
+
+    &.icon {
+        width: 42px;
+        padding: 12px 0px;
+        color: colors(gray);
+        line-height: $baseFontSize;
+        font-size: $baseFontSize + 12px;
+    }
+    &.fill {
+        flex-grow: 1;
+    }
+    &:first-of-type:not(.icon) {
+        margin-left: 8px;
+    }
+    &:last-of-type {
+        margin-right: 8px;
+    }
+    &.cell-no-margin-left {
+        margin-left: 0px;
+    }
+    &.cell-less-padding {
+        padding: 6px 0px;
+    }
+}
+
+.table.gray-theme .row {
+
+    &.selected {
+        background-color: #efefef;
+    }
+    &:hover:not(.selected) {
+        background-color: whitesmoke;
+    }
+    &.selected:hover {
+        background-color: #efefef;
+    }
+}

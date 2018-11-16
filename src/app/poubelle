@@ -1,0 +1,24 @@
+<div class="row">
+      <!--<div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-default">Année de naissance</span>
+        </div>
+        <input type="text" class="form-control" aria-describedby="inputGroup-sizing-default">
+      </div>-->
+    </div>
+
+
+    <!--<div class="title"><h1>Calcul de la clairance de la créatinine</h1></div>-->
+    
+
+
+    <!--<div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                360 medics - Les bonnes pratiques à portée de main
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Action</button>
+                <button class="dropdown-item" type="button">Another action</button>
+                <button class="dropdown-item" type="button">Something else here</button>
+              </div>
+            </div>-->

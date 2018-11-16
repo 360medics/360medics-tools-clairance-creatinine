@@ -1,0 +1,36 @@
+ul.data-explorer {
+    font-family: Monospace, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    padding-left: 20px;
+
+    li {
+        .expander {
+            width: 16px;
+            i.fa {
+                font-size: 16px;
+                line-height: 13px;
+            }
+        }
+        .properties-list {
+            margin-left: 18px;
+        }
+        .number {
+            color: #ee422e;
+        }
+        .string {
+            color: green;
+        }
+        .object {
+            color: grey;
+        }
+        .boolean {
+            color: #ff8c00;
+        }
+    }
+}

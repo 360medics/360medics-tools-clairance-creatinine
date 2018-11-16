@@ -1,0 +1,26 @@
+.mentions-container {
+    position: relative;
+}
+
+.mentions-directive {
+    position: absolute;
+    bottom: 0px;
+
+    .mention-directive-list {
+
+        ul {
+
+            list-style-type: none;
+            border: 1px solid #eee;
+            border-radius: 3px;
+            padding: 4px 0px;
+            
+            li {
+                a {
+
+                }
+            }
+        }
+    }
+
+}

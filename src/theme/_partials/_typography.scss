@@ -1,0 +1,78 @@
+@import "../_variables";
+
+p {
+    line-height: 1.5em;
+}
+
+h1 {
+    font-weight: 200;
+    font-family: Arial, sans-serif;
+    margin-top: 0px;
+}
+
+h2.page-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: $baseFontSize + 8px;
+    font-weight: 600;
+    margin: 0px;
+    line-height: 34px;
+
+    &.align-with-table {
+        margin-left: 8px;
+    }
+}
+
+h3.page-title {
+    color: colors(gray);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: $baseFontSize + 2px;
+    font-weight: 400;
+    margin: 0px;
+}
+
+h3.section-title {
+    color: colors(gray);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: $baseFontSize + 2px;
+    font-weight: 400;
+    margin: 0px;
+    margin-bottom: 8px;
+}
+
+h4.page-title {
+    color: colors(gray);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: $baseFontSize;
+    font-weight: 400;
+    margin: 0px;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.underlined-on-hover {
+    &:hover { text-decoration: underline }
+}
+
+.align-center {
+    text-align: center;
+}
+.align-left {
+    text-align: left;
+}
+.align-right {
+    text-align: right;
+}

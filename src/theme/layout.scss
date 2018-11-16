@@ -1,0 +1,94 @@
+@import "_variables";
+
+/* this content always starts just below the header */
+[page] {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+
+    &[with-header] {
+        margin-top: $header-height;
+    }
+    &[without-header] {
+        margin-top: 0px;
+    }
+
+    [page-content] {
+        margin: 32px 32px 32px 32px;
+
+        &[page-content-without-margin] {
+            margin: 0px 0px 0px 0px;
+        }
+    }
+
+    // make sure theree is no css glitch when using with flex directives
+    &[flex-rows] { flex-direction: row }
+    &[flex-columns] { flex-direction: column }
+
+    &[whitesmoke] {
+        background-color: colors(whitesmoke);
+    }
+}
+
+[fullpage] {
+    display: flex;
+    flex: 1;
+}
+[overflow-visible] {
+    overflow: visible;
+}
+
+.bg-gray {
+    background-color: background(gray);
+}
+
+.overflow-hidden {
+    overflow: hidden;
+}
+[no-overflow-y] {
+    overflow-y: hidden;
+}
+[no-overflow-x] {
+    overflow-x: hidden;
+}
+
+.relative {
+    position: relative;
+}
+
+/* Media queries */
+@media (max-width: $mainBreakpoint) {
+    [page] {
+        [page-content] {
+            margin: 32px 3% 32px 3%;
+        }
+    }
+}
+
+[noscroll] {
+    overflow: hidden;
+}
+[scroll] {
+    overflow: auto;
+}
+[scroll-x] {
+    overflow-x: auto;
+}
+[scroll-y] {
+    overflow-y: auto;
+}
+[no-margin-left], [page-content][no-margin-left] {
+    margin-left: 0px;
+}
+[no-margin-right][page-content][no-margin-right] {
+    margin-right: 0px;
+}
+[no-margin-top][page-content][no-margin-top] {
+    margin-top: 0px;
+}
+[no-margin-bottom][page-content][no-margin-bottom] {
+    margin-bottom: 0px;
+}

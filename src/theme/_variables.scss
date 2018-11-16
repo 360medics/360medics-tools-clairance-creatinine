@@ -1,0 +1,132 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Base text sizes */
+$baseFontSize: 14px;
+$baseTextColor: #292929;
+
+/* Common shared vars */
+$header-height: 60px;
+$timelineFilamentColor: #e1e1ec; //#d3dae8;
+$timelineFilamentBorder: #cfcfcf;
+$timelineBgColor: #efefef;
+
+/* 360 medics primary (redish) color */
+$primaryColor: #c41723;
+
+/* Media queries main breakpoints */
+$mainBreakpoint: 620px;
+
+$postBorderColor:   #dddfe2;
+
+$themeColors: (
+    white:          #ffffff,
+    midnight:       #171717,
+    black:          #292929,
+    title:          #444444,
+    pigeon:         #868686,
+    primary:        #c41723,
+    primary-hover:  #a50b15,
+    primary-active: #de6971,
+    gray:           #b7b7b7,
+    green:          #08ab21,
+    darkgreen:      #1a401a,
+    whitesmoke:     #f5f5f5,    // the actual real "whitesmoke" CSS color for hovering stuff discretely, or gray background
+    whitersmoke:    #f9f9f9,
+    ceeigray:       #cecece,
+    ceeilight:      #eaeaea, // @TODO replace by ceeilalt evverywhere ? (easy...)
+    ceilalt:        #e4e4e4,
+    smoke:          #dadada,    // smoke is the basic gray border color (try #dadada OR #e0e0e0 maybe its quite the same)
+    concrete:       #4d4d4d,    // a middle dark gray often used for
+    overlay:        #333333,    // needs an opcity of ~0.4 to look good
+    neutral:        #b7b7b7,    // grayish for discreet but visible icons and secondary buttons
+    neutral-hover:  #5a5a5a,
+    deepblue:       #1d577d,
+    deepblue-hover: #194663,
+    blue:           #2f96e8,
+    charcoal:       #404040,
+    charcoal-hover: #333,
+    charcoal-inset: #bfbfbf,
+    input-blue:     #4d90fe,    // @deprecated (probably, its a blue... :/)
+
+    selection-blue: #e9f4fb, // #eaf2f7, // #f6f8ff,
+    selection-blue-border: #74b0f1,
+);
+
+$colors: (
+    white:              #ffffff,
+    black:              $baseTextColor,
+    red:                #de0c1a,
+    primary:            $primaryColor,
+    primary-inversed:   #f9f9f9,
+    primary-shadow:     #f3e1e3,
+    primary-hover:      #a50b15,
+    tertiary:           #ff6f00,
+    tertiary-hover:     #e66b0c,
+    skyblue:            #2196F3,
+    blue:               #0273ad,
+    error:              #df3313,
+    purple:             #7b5dbb,
+    warning:            #efb840,
+    success:            #4aa363,
+    moonlight:          #fafafa,
+    neutral:            #949494,
+    gray:               #b7b7b7,
+    green:              #08ab21,
+);
+
+/* Themes definitions */
+$text-colors: (
+    black:      $baseTextColor,
+    white:      #f7f7f7,
+    primary:    $primaryColor,
+    normal:     $baseTextColor,
+    smooth:     #3a3a3a,
+    smoother:   #484848,
+    blueish:    #a0a9b5,
+    gray:       #b7b7b7,
+    error:      #de0c1a,
+);
+$bg-colors: (
+    blueish:    #f3f5f8,
+    gray:       whitesmoke,
+    white:      #ffffff,
+    charcoal:   #404040,
+    grayhover:  #f9f9f9,
+    charcoal-hover: #333,
+    charcoal-inset: #bfbfbf,
+);
+$border-colors: (
+    gray:                   #dadada, // #dddfe2,
+    primary:                $primaryColor,
+    charcoal:               #404040,
+    charcoal-separator:     #272727,
+    grayhover:              #dedede,
+);
+$font-sizes: (
+    normal: $baseFontSize,
+    normalMinusOne: ($baseFontSize - 1px),
+    small:  ($baseFontSize - 2px),
+    tiny:   ($baseFontSize - 4px),
+    large:  ($baseFontSize + 2px),
+    big:    ($baseFontSize + 4px),
+    huge:   ($baseFontSize + 8px),
+);
+
+@function colors($colorName) {
+    @return map-get($themeColors, $colorName);
+}
+@function color($name) {
+    @return map-get($colors, $name);
+}
+@function text($theme) {
+    @return map-get($text-colors, $theme);
+}
+@function background($theme) {
+    @return map-get($bg-colors, $theme);
+}
+@function border($theme) {
+    @return map-get($border-colors, $theme);
+}
+@function font($size) {
+    @return map-get($font-sizes, $size);
+}

@@ -1,0 +1,27 @@
+@import "_variables";
+
+/**
+ * Icons sizes fixes and handlers
+ */
+a .icon {
+    margin-right: 6px;
+}
+
+.iklarge {
+    font-size: 1.1em;
+    line-height: 1em;
+}
+
+.ikright,
+/deep/ .ikright {
+    margin-right: 2px;
+}
+.ikleft,
+/deep/ .ikright{
+    margin-left: 2px;
+}
+
+i.fa-blank, span.fa-blank {
+    display: inline-block;
+    width: 13px;
+}

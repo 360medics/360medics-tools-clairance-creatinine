@@ -1,0 +1,25 @@
+/* responsive media queries */
+
+@media screen and (max-width: 890px) {
+    .remove-at-890px {
+        display: none !important;
+    }
+
+    timeline-page {
+        [page] {
+            justify-content: center;
+        }
+    }
+}
+
+// smaller posts on very very narrow dragged browsers
+@media screen and (max-width: 560px) {
+    .post-inner {
+        background: red;
+    }
+
+    .post-outer {
+        max-width: 540px !important;
+        min-width: 0px !important;
+    }
+}

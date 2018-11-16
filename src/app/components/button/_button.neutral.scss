@@ -1,0 +1,29 @@
+@import "../../../theme/_mixins";
+@import "../../../theme/_variables";
+
+:host[neutral] {
+
+    button {
+        padding: 0px;
+        margin: 0px;
+        color: colors(neutral);
+        background: none;
+        border: none;
+
+        &:hover {
+            color: colors(neutral-hover);
+        }
+
+        &:active {
+
+        }
+
+        &[icon-only] {
+            padding: 0px;
+
+            button {
+                // @TODO To style
+            }
+        }
+    }
+}

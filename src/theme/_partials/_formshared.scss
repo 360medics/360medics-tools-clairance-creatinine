@@ -1,0 +1,66 @@
+@import "../_mixins";
+@import "../_variables";
+
+/deep/ .control {
+    display: flex;
+    // width: 90px;
+    flex-direction: column;
+    position: relative;
+    margin-bottom: 16px;
+
+    &.control-90px {
+        width: 90px;
+    }
+
+    &.fullwidth {
+        flex: 1;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    label {
+        display: block;
+        color: #c6c7ca;
+        font-size: $baseFontSize;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        padding-left: 1px;
+
+        &.upper {
+            font-size: $baseFontSize - 3;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+    }
+
+    &.collapsed {
+        margin-bottom: 0px;
+    }
+    &.last-controls {
+        margin-top: 16px;
+    }
+}
+
+.star-required {
+    position: absolute;
+    color: #dc2323;
+    right: 12px;
+    top: 12px;
+    font-size: $baseFontSize + 4px;
+    font-weight: bold;
+}
+
+/deep/ .control {
+    textarea  {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+.control.inline-controls {
+    display: flex;
+    flex-direction: row;
+    div, app-button, input-control, label {
+        margin-right: 8px;
+    }
+}

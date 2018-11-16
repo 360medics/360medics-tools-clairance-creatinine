@@ -1,0 +1,223 @@
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+
+  .left,
+  .right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  label {
+    border: 1px solid;
+    padding: 5px;
+  }
+
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .border-padding {
+    border: 1px solid;
+    padding: 5px;
+  }
+
+  .right-five {
+    margin-right: 5px;
+  }
+
+  input {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    margin: 0px 0px 5px 15px;
+  }
+
+  button {
+    margin: 16px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .btn {
+    border: none;
+    padding: 5px;
+  }
+
+  .btn-success {
+    background-color: green;
+  }
+
+  .btn-reset {
+    background-color: gray;
+  }
+}
+
+.result-box {
+
+  .flex-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .separator {
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+  }
+
+  #bar {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    flex: auto;
+    position: relative;
+    max-width: 100%;
+    min-width: 100%;
+    border-radius: 30px;
+    margin: 10px 0px 10px 0px;
+  }
+
+  .case1 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #0004CC;
+    width: 15%;
+    border-radius: 30px 0 0 30px;
+    color: white;
+  }
+
+  .case2 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #77B5FE;
+    color: white;
+    width: 7%;
+  }
+
+  .case3 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #FFFFFF;
+    width: 15%;
+  }
+
+  .case4 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #D1B607;
+    width: 15%;
+  }
+
+  .case5 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #FF7E01;
+    width: 15%;
+  }
+
+  .case6 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #E73E01;
+    width: 15%;
+  }
+
+  .case7 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #CC0001;
+    width: 18%;
+    border-radius: 0 30px 30px 0;
+  }
+
+  .left {
+    position: absolute;
+    left: 5px;
+  }
+
+  .left-middle {
+    position: relative;
+    right: 18px;
+  }
+
+  .middle {
+    position: absolute;
+    left: -7.5px;
+  }
+
+  .right {
+    position: absolute;
+    right: 5px;
+  }
+
+  .one {
+    width: 15%;
+    text-align: center;
+  }
+
+  .two {
+    width: 7%;
+    text-align: center;
+  }
+
+  .three {
+    width: 15%;
+    text-align: center;
+  }
+
+  .four {
+    width: 15%;
+    text-align: center;
+  }
+
+  .five {
+    width: 15%;
+    text-align: center;
+  }
+
+  .six {
+    width: 15%;
+    text-align: center;
+  }
+
+  .seven {
+    width: 15%;
+    text-align: center;
+  }
+
+}
+
+
+
+
+
+.result-box {
+  border: solid 1px gray;
+}
+
+
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,187 @@
+@import "_variables";
+
+@mixin translate($x, $y) {
+    -webkit-transform: translate($x, $y);
+    -moz-transform:  translate($x, $y);
+    -o-transform:  translate($x, $y);
+    transform:  translate($x, $y);
+}
+
+$textColor: colors(whitersmoke);
+$bgColor: colors(blue);
+$displace: 5px;
+
+[tooltip] {
+    position: relative;
+
+
+    &::after,
+    &::before {
+        line-height: 1;
+        user-select: none;
+        pointer-events: none;
+
+        position: absolute;
+        display: none;
+        // opacity: 0;
+
+        /* opinions */
+        text-transform: none;
+        font-size: $baseFontSize - 1px;
+    }
+
+    &::before {
+        content: '';
+        z-index: 1001;
+        border: solid 5px transparent;
+    }
+
+    &::after {
+        content: attr(tooltip); /* magic! */
+        z-index: 1000;
+
+       /* most of the rest of this is opinion */
+       text-align: center;
+       line-height: 1.3em;
+
+       /*
+       Let the content set the size of the tooltips
+       but this will also keep them from being obnoxious
+       */
+       min-width: 3em;
+       max-width: 21em;
+
+       overtooltipDirection: hidden;
+       text-overtooltipDirection: ellipsis;
+
+       /* visible design of the tooltip bubbles */
+       padding: 1ch 1.5ch;
+       border-radius: 1px;
+       box-shadow: 0 1em 2em -.5em rgba(0, 0, 0, 0.35);
+       background-color: $bgColor;
+       color: $textColor;
+       font-weight: bold;
+       // https://css-tricks.com/injecting-line-break/
+       white-space: pre; /* or pre-wrap Allow line breask "\A"*/
+    }
+
+    &[tooltip-displace-top-4px]::after,
+    &[tooltip-displace-top-4px]::before {
+        margin-top: -4px;
+    }
+
+    &:hover::after,
+    &:hover::before {
+        display: block;
+    }
+
+    /* display up */
+    /* ONLY the ::before */
+    &:not([tooltipDirection])::before,
+    &[tooltipDirection^="up"]::before {
+        bottom: 100%;
+        border-bottom-width: 0;
+        border-top-color: $bgColor;
+    }
+
+    /* ONLY the ::after */
+    &:not([tooltipDirection])::after,
+    &[tooltipDirection^="up"]::after {
+        bottom: calc(100% + 5px);
+    }
+
+    /* Both ::before & ::after */
+    &:not([tooltipDirection])::before,
+    &:not([tooltipDirection])::after,
+    &[tooltipDirection^="up"]::before,
+    &[tooltipDirection^="up"]::after {
+        left: 50%;
+        @include translate(-50%, -.5em);
+    }
+
+    /* display down */
+    &[tooltipDirection^="down"]::before {
+        top: 100%;
+        border-top-width: 0;
+        border-bottom-color: $bgColor;
+    }
+
+    &[tooltipDirection^="down"]::after {
+        top: calc(100% + 5px);
+    }
+
+    &[tooltipDirection^="down"]::before,
+    &[tooltipDirection^="down"]::after {
+        left: 50%;
+        @include translate(-50%, -.5em);
+    }
+
+
+    /* display left */
+    &[tooltipDirection^="left"]::before {
+        top: 50%;
+        border-right-width: 0;
+        border-left-color: $bgColor;
+        left: calc(0em - 5px);
+        @include translate(-.5em, -50%);
+    }
+
+    &[tooltipDirection^="left"]::after {
+        top: 50%;
+        right: calc(100% + 5px);
+        @include translate(-.5em, -50%);
+    }
+
+    /* display right */
+    &[tooltipDirection^="right"]::before {
+        top: 50%;
+        border-left-width: 0;
+        border-right-color: $bgColor;
+        right: calc(0em - 6px);
+        transform: translate(.5em, -50%);
+    }
+
+    &[tooltipDirection^="right"]::after {
+        top: 50%;
+        left: calc(100% + 5px);
+        transform: translate(.5em, -50%);
+    }
+
+    /*  Animation */
+    // @keyframes tooltips-vert {
+    //   to {
+    //     // opacity: .9;
+    //     transform: translate(-50%, 0);
+    //   }
+    // }
+    //
+    // @keyframes tooltips-horz {
+    //   to {
+    //     // opacity: .9;
+    //     transform: translate(0, -50%);
+    //   }
+    // }
+
+    // &:not([tooltipDirection]):hover::before,
+    // &:not([tooltipDirection]):hover::after,
+    // &[tooltipDirection^="up"]:hover::before,
+    // &[tooltipDirection^="up"]:hover::after,
+    // &[tooltipDirection^="down"]:hover::before,
+    // &[tooltipDirection^="down"]:hover::after {
+    //     animation: tooltips-vert 300ms ease-out forwards;
+    // }
+
+    // &[tooltipDirection^="left"]:hover::before,
+    // &[tooltipDirection^="left"]:hover::after,
+    // &[tooltipDirection^="right"]:hover::before,
+    // &[tooltipDirection^="right"]:hover::after {
+    //     animation: tooltips-horz 300ms ease-out forwards;
+    // }
+}
+
+
+/* don't show empty tooltips */
+[tooltip='']::before,
+[tooltip='']::after {
+    display: none !important;
+}

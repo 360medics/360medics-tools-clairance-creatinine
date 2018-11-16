@@ -1,0 +1,31 @@
+@import "../../../theme/_mixins";
+@import "../../../theme/_variables";
+
+:host[primary] {
+
+    button {
+
+        color: colors(white);
+        background-color: colors(primary);
+        border: 1px solid colors(primary);
+
+        &:hover {
+            background-color: colors(primary-hover);
+            border: 1px solid colors(primary-hover);
+        }
+
+        &:active {
+            background-color: colors(primary-active);
+        }
+    }
+
+    &[icon-only] {
+        padding: 0px;
+        
+        button {
+            color: colors(primary);
+            background-color: transparent;
+            border-color: transparent;
+        }
+    }
+}

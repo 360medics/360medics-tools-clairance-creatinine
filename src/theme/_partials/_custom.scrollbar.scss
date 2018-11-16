@@ -1,0 +1,42 @@
+@import "../theme/_mixins";
+@import "../theme/_variables";
+
+[custom-scrollbar]
+{
+    /* Chrome/Webkit */
+    &::-webkit-scrollbar {
+        position: fixed;
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+        background-clip: content-box;
+    } /* the new scrollbar will have a flat appearance with the set background color */
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #c3c3c3;
+        border-radius: 5px;
+    } /* this will style the thumb, ignoring the track */
+
+
+    &::-webkit-scrollbar-button {
+        display: none;
+    } /* optionally, you can style the top and the bottom buttons (left and right for horizontal bars) */
+
+    &::-webkit-scrollbar-corner {
+        background-color: #000;
+    } /* if both the vertical and the horizontal bars appear, then perhaps the right bottom corner also needs to be styled */
+}
+
+[scroll] {
+    overflow: auto;
+}
+
+[scroll-y] {
+    overflow-y: auto;
+}
+
+[scroll-x] {
+    overflow-x: auto;
+}

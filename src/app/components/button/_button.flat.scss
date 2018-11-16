@@ -1,0 +1,26 @@
+@import "../../../theme/_mixins";
+@import "../../../theme/_variables";
+
+:host[flat] {
+
+    button {
+        color: color(neutral);
+        //color: colors(concrete); ?
+        background-color: none;
+        border: 1px solid transparent;
+
+        &:hover {
+            color: color(black);
+        }
+
+        &:active {
+
+        }
+
+        &[icon-only] {
+            button {
+                // @TODO To style
+            }
+        }
+    }
+}

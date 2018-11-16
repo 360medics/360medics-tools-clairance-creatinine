@@ -1,0 +1,91 @@
+@import "../../../theme/_mixins";
+@import "../../../theme/_variables";
+@import "./_button.primary";
+@import "./_button.inversed";
+@import "./_button.secondary";
+@import "./_button.tertiary";
+@import "./_button.neutral";
+@import "./_button.flat";
+@import "./_button.small";
+@import "./_button.quiz";
+
+:host {
+    position: relative;
+
+    .visible { visibility: visible }
+    .invisible { visibility: hidden }
+
+    .loader {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+
+        img.svg-loader {
+            width: 20px;
+        }
+    }
+
+    button {
+        cursor: pointer;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 16px;
+        line-height: 16px;
+        @include borderRadius(1px);
+        @include transition(background-color ease 0.2s, border ease 0.2s, color ease 0.2s);
+
+        &[disabled] {
+            cursor: not-allowed;
+            color: #bdbdbd;
+            background-color: #f9f9f9;
+            border: 1px solid #f9f9f9;
+
+            &:hover {
+                cursor: not-allowed;
+                color: #bdbdbd;
+                background-color: #f9f9f9;
+                border: 1px solid #f9f9f9;
+            }
+        }
+
+        span {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /deep/ .icon {
+            margin-right: 5px;
+            line-height: 16px;
+            font-size: $baseFontSize + 3px;
+        }
+    }
+
+    // &[small] {
+    //     button {
+    //         padding: 6px 12px;
+    //         line-height: 12px;
+    //     }
+    // }
+
+    &[rounded] {
+        button {
+            @include borderRadius(16px);
+        }
+    }
+
+    &[icon-only] {
+        button {
+            padding: 0px;
+
+            /deep/ .fa, /deep/ .fal, /deep/ .fab, /deep/ .icon {
+                font-size: $baseFontSize + 2px;
+                line-height: $baseFontSize + 2px;
+                margin-right: 0px;
+            }
+        }
+    }
+}

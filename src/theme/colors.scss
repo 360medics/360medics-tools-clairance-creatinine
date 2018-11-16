@@ -1,0 +1,36 @@
+/* Color text classes */
+@import "./_variables";
+
+.color-twitter-blue,
+/deep/ .color-twitter-blue {
+    color: colors(deepblue);
+}
+
+.color-facebook-blue,
+/deep/ .color-facebook-blue {
+    color: colors(blue);
+}
+
+.color-gray {
+    color: #acabac;
+}
+
+.color-primary {
+    color: colors(primary);
+}
+
+.color-blue {
+    color: colors(blue);
+}
+
+.color-warning {
+    color: colors(warning);
+}
+
+.color-green {
+    color: colors(green);
+}
+
+.color-light-gray {
+    color: colors(pigeon);
+}

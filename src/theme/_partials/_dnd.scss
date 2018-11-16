@@ -1,0 +1,12 @@
+@import "../_variables";
+
+.drag-helper {
+    color: colors(black);
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    font-size: $baseFontSize - 1px;
+    background-color: #fff;
+    border: 1px solid colors(smoke);
+    @include boxShadow(0px, 0px, 8px, #ececec);
+}

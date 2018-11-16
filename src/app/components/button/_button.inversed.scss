@@ -1,0 +1,18 @@
+@import "../../../theme/_mixins";
+@import "../../../theme/_variables";
+
+:host[inversed] {
+    button {
+        color: text(primary);
+        background-color: color(white);
+        border: 1px solid color(primary);
+
+        &:hover {
+            background-color: colors(whitersmoke);
+        }
+        &:active {
+            background-color: colors(whitesmoke);
+        }
+
+    }
+}

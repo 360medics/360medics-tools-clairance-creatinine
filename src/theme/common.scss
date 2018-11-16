@@ -1,0 +1,28 @@
+@import "_mixins";
+@import "_variables";
+
+*, html { outline: none }
+
+body {
+    color: text(normal);
+    font-size: font(normal);
+    font-family: Arial, sans-serif;
+    @include textAntialias()
+}
+
+/* Fullscreen single page app base layout */
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+app-root {
+    min-width: 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+router-outlet {
+    display: none;
+}
