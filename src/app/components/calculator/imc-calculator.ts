@@ -21,7 +21,7 @@ export class ImcCalculator
 
     compute(data: ImcDataType)
     {
-        let imc: number;
+        let imc: any;
         let sliderLabel: string;
         let sliderPercentage: number;
 
