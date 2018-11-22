@@ -2,25 +2,29 @@ import { ImcDataType } from './imc-calculator';
 import { round2 } from './round2';
 
 
-// export type CreatinineComputeType = {
-//     cockroft: number;
+export type CreatinineComputeType = {
+    cockroftGault: any;
+    mdrd: any;
+}
 
-// }
+export type CockroftGaultAndMDRDDataType = {
+    cockroftGault: any;
+    mdrd: any;
+}
 
 export class CreatinineCompute {
     constructor() {
 
     }
 
-    compute(formData: ImcDataType) {
+    compute(formData: ImcDataType): CockroftGaultAndMDRDDataType {
 
-        let cockroft: any;
+        let cockroftGault: any;
+        let mdrd: any;
         let m1: any;
         let m2: any;
         let createUnite: any;
         let creat: any;
-        let creaumol: any;
-        let mdrd: any;
         let slidePercMdrd: any;
         let paraCock: any;
         let slidePercCock: any;
@@ -29,8 +33,19 @@ export class CreatinineCompute {
         let paraMdrd: any;
         let creat2: any;
 
+        // COCKROFT FORMULE 2 (creatinimie en µmol/L)
+        const k = (formData.sex === 'H') ? 1.23 : 1.04;
+
+        if (formData.creatinimieType === 'mg/L') {
+            creat = (formData.creatinimie / 10) * 88.4;
+        } else {
+            creat = formData.creatinimie;
+        }
+        cockroftGault = (((140 - (formData.age) / creat) * formData.weight * k));
+        // console.log(cockroftGault)
+
         // COCKROFT FORMULE 1 (creatinimie en mg/dL)
-        cockroft = round2(cockroft);
+        cockroftGault = round2(cockroftGault);
 
         m1 = m2 = 1;
 
@@ -41,17 +56,15 @@ export class CreatinineCompute {
         if (formData.originAfro === true) {
             m2 = 1.212;
         }
-
-        // COCKROFT FORMULE 2 (creatinimie en µmol/L)
-        let coef = 140;
-        const k = (formData.sex === 'H') ? 1.23 : 1.04;
-
+        
+        // MDRD FORMULE 2 (creatinimie en µmol/L)
         if (parseInt(createUnite, 2)) {
-            creat = (creaumol / 10) * 88.4;
+            creat2 = formData.creatinimie / 10;
         } else {
-            creat = creaumol;
+            creat2 = formData.creatinimie;
         }
-        cockroft = (((140 - (formData.age) / creat) * formData.weight * k));
+
+        mdrd = 186 * Math.pow((creat2 * 0.0113), -1.154) * Math.pow(formData.age, -0.203) * m1 * m2;
 
         // MDRD FORMULE 1 (creatinimie en mg/dL)
         if (createUnite === 2) {
@@ -59,17 +72,8 @@ export class CreatinineCompute {
         }
         mdrd = round2(mdrd);
 
-        // MDRD FORMULE 2 (creatinimie en µmol/L)
-        if (parseInt(createUnite, 2)) {
-            creat2 = creaumol / 10;
-        } else {
-            creat2 = creaumol;
-        }
-
-        mdrd = 186 * Math.pow((creat2 * 0.0113), -1.154) * Math.pow(formData.age, -0.203) * m1 * m2;
-
         // Interpretations cockroft:
-        slidePercCock = (cockroft / 120) * 100;
+        slidePercCock = (cockroftGault / 120) * 100;
         if (slidePercCock < 10) {
             slidePercCock = 10;
         }
@@ -77,22 +81,22 @@ export class CreatinineCompute {
             slidePercCock = 90;
         }
 
-        if (cockroft <= 30) {
+        if (cockroftGault <= 30) {
             slideClassCock = 'severe';
             paraCock = " Insuffisance rénale sévère";
-        } else if (cockroft <= 60) {
+        } else if (cockroftGault <= 60) {
             slideClassCock = 'modere';
             paraCock = "Insuffisance rénale modérée";
-        } else if (cockroft <= 80) {
+        } else if (cockroftGault <= 80) {
             slideClassCock = 'legere';
             paraCock = "Insuffisance rénale légère";
         } else {
             slideClassCock = 'normal';
             paraCock = "Valeurs normales";
         }
-        return paraCock;
-        return slideClassCock;
-        return slidePercCock;
+        // return paraCock;
+        // return slideClassCock;
+        // return slidePercCock;
 
 
         //interpretation MDRD
@@ -117,12 +121,17 @@ export class CreatinineCompute {
             slideClassMdrd = 'normal';
             paraMdrd = "Valeurs normales";
         }
-        return paraMdrd;
-        return slideClassMdrd;
-        return slidePercMdrd;
+        // return paraMdrd;
+        // return slideClassMdrd;
+        // return slidePercMdrd;
 
-        return cockroft;
-        return mdrd;
+        // return cockroftGault;
+        // return mdrd;
+
+        return {
+            cockroftGault: cockroftGault,
+            mdrd: mdrd,
+        }
 
     }
 }

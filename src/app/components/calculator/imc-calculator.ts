@@ -1,5 +1,6 @@
 import { round2 }               from './round2';
 import { imcSliderPercentage }  from './imc-slider-percentage';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 export type ImcDataType = {
     birthYear: number;
@@ -12,6 +13,12 @@ export type ImcDataType = {
     originAfro: boolean;
 }
 
+export type ImcResultDataType = {
+    imc: any;
+    sliderLabel: string;
+    sliderPercentage: number;
+}
+
 export class ImcCalculator
 {
     constructor()
@@ -19,7 +26,7 @@ export class ImcCalculator
 
     }
 
-    compute(data: ImcDataType)
+    compute(data: ImcDataType): ImcResultDataType
     {
         let imc: any;
         let sliderLabel: string;

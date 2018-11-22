@@ -46,12 +46,14 @@
       </div>
 
       <div class="flex-row">
-        <input [(ngModel)]="formData.originAfro" type="radio" value="yes" (click)="onRadioButtonClicked('yes')">Oui
-        <input [(ngModel)]="formData.originAfro" type="radio" value="no" (click)="onRadioButtonClicked('no')">Non
+        <input [(ngModel)]="formData.originAfro" type="radio" value="true" (click)="onRadioButtonClicked('true')">Oui
+        <input [(ngModel)]="formData.originAfro" type="radio" value="false" (click)="onRadioButtonClicked('false')">Non
       </div>
 
       <div class="flex-row">
         <button (click)="compute()" class="btn btn-success">Calculer</button>
+        <!-- {{ imcResultData | json }} -->
+        {{ cockroftGaultResultData | json }}
         <button (click)="reset()" class="btn btn-reset">Réinitialiser</button>
       </div>
 
@@ -64,7 +66,7 @@
 
     <div class="flex-row">
       <p>IMC : </p>
-      <input type="text">
+      <input type="text" value="{{ imcResultData.imc }}">
       <p>(kg/m²)</p>
     </div>
 
@@ -121,7 +123,7 @@
 
     <div class="flex-row">
       <p>Cockroft & Gault :</p>
-      <input type="text">
+      <input type="text" value="{{ cockroftGaultResultData.cockroftGault }}">
       <p>(ml/min/1.73m²)</p>
     </div>
 
@@ -129,7 +131,7 @@
 
     <div class="flex-row">
       <p>MDRD :</p>
-      <input type="text">
+      <input type="text" value="{{ cockroftGaultResultData.mdrd }}">
       <p>(ml/min/1.73m²)</p>
     </div>
   </div>
