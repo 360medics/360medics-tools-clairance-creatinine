@@ -17,13 +17,13 @@
 
         <div class="flex-row">
             <label class="form-control">Poids</label>
-            <input [(ngModel)]="formData.weight" type="text" class="right-five">
+            <input [(ngModel)]="formData.weight" type="text" class="no-border-right">
             <span class="add-on">kg</span>
         </div>
 
         <div class="flex-row">
             <label class="form-control">Taille</label>
-            <input [(ngModel)]="formData.height" type="text" class="right-five">
+            <input [(ngModel)]="formData.height" type="text" class="no-border-right">
             <span class="add-on">cm</span>
         </div>
 
@@ -36,15 +36,14 @@
 
         <div class="flex-row">
             <label class="form-control">Sexe</label>
-            <button id="resize" [ngClass]="{selected: formData.sex === 'H', btn:true}" (click)="formData.sex = 'H'">Homme</button>
-            <button id="resize" [ngClass]="{selected: formData.sex === 'F', btn:true}" (click)="formData.sex = 'F'">Femme</button>
+            <button class="switch-btn" [ngClass]="{selected: formData.sex === 'H'}" (click)="formData.sex = 'H'">Homme</button>
+            <button class="switch-btn" [ngClass]="{selected: formData.sex === 'F'}" (click)="formData.sex = 'F'">Femme</button>
         </div>
 
         <div class="flex-row">
             <label class="form-control">Origine afro-américaine</label>
-
-          <button id="resize" [ngClass]="{selected: formData.originAfro === true, btn:true}" (click)="formData.originAfro = true">Oui</button>
-          <button id="resize" [ngClass]="{selected: formData.originAfro === false, btn:true}" (click)="formData.originAfro = false">Non</button>
+            <button class="switch-btn" [ngClass]="{selected: formData.originAfro === true}" (click)="formData.originAfro = true">Oui</button>
+            <button class="switch-btn" [ngClass]="{selected: formData.originAfro === false}" (click)="formData.originAfro = false">Non</button>
         </div>
 
         <div class="flex-row">
@@ -55,9 +54,9 @@
     </div>
 
     <div class="result-box">
-        <p>IMC : {{ imcResultData.imc }} kg/m2 <span style="color: #EF7564"> {{ imcResultData.sliderLabel }} </span></p>
-        <p>Cockroft & Gault : {{ cockroftGaultResultData.cockroftGault }} ml/min/1.72m2</p>
-        <p>MDRD : {{ cockroftGaultResultData.mdrd }} ml/min/1.72m2</p>
+        <p>IMC : <b>{{ imcResultData.imc }}</b> kg/m2 <span style="color: #EF7564"> {{ imcResultData.sliderLabel }} </span></p>
+        <p>Cockroft & Gault : <b>{{ cockroftGaultResultData.cockroftGault }}</b> ml/min/1.72m2</p>
+        <p>MDRD : <b>{{ cockroftGaultResultData.mdrd }}</b> ml/min/1.72m2</p>
     </div>
 
 </div>
