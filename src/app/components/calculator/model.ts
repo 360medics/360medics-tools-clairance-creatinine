@@ -1,4 +1,4 @@
-namespace Model {
+export namespace Model {
     export interface ImcDataType {
         birthYear: number;
         age: number;
@@ -6,7 +6,7 @@ namespace Model {
         height: number;
         creatinimie: number;
         creatinimieType: 'µmol/L' | 'mg/L';
-        sex: 'H' | 'F';
+        sex: any;
         originAfro: boolean;   
     }
 
@@ -16,11 +16,17 @@ namespace Model {
         sliderPercentage: number;
     }
 
-    export interface CreatinineComputeType {
-    }
+    // export interface CreatinineComputeType {
+    // }
 
-    export interface CockroftGaultAndMDRDDataType {
+    // export interface CockroftGaultAndMDRDDataType {
+    //     cockroftGault: any;
+    //     mdrd: any;
+    // }
+
+    export interface CreatinineResultDataType {
         cockroftGault: any;
         mdrd: any;
     }
+
 }

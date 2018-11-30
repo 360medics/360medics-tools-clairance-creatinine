@@ -1,10 +1,12 @@
 import { Component, OnInit, AfterViewInit }   from '@angular/core';
 import { ElementRef, ViewChild }              from '@angular/core';
 import { NgForm }                             from '@angular/forms';
-// import { Calculator, CalculatorInput }     from './calculator';
-import { ImcDataType, ImcCalculator }         from '../components/calculator';
+import { ImcDataType }                        from '../components/calculator';
 import { round2 }                             from '../components/calculator/round2';
-import { CreatinineCompute }                  from '../components/calculator/CreatinineCompute'
+// import { CreatinineCompute }                  from '../components/calculator/CreatinineCompute'
+import { ImcCalculator }                      from "../components/calculator/imc-calculator";
+import { CreatinineCalculator }               from "../components/calculator/creatinine-calculator";
+import { Model }                              from '../components/calculator/model';
 
 @Component(
   {
@@ -19,7 +21,7 @@ export class CreatinineComponent
 
   imcResultData: Model.ImcResultDataType;
 
-  cockroftGaultResultData: Model.CockroftGaultAndMDRDDataType;
+  cockroftGaultResultData: Model.CreatinineResultDataType;
 
   public formData: ImcDataType = {
     birthYear: 1985,
@@ -47,7 +49,6 @@ export class CreatinineComponent
   slidePercMdrd: null;
   slideClassMdrd: null;
   paraMdrd: null;
-
   //IMC
   imc: any;
   percent: any;
@@ -62,17 +63,9 @@ export class CreatinineComponent
   @ViewChild('form') form: NgForm;
   error: string;
 
+  cursorStyle = {};
+
   constructor(private el: ElementRef) {
-    // this.reset()
-    // this.imc = '';
-    // this.percent = '';
-    // this.seuilMin = '';
-    // this.seuilMax = '';
-    // this.value = '';
-    // this.percentMin = '';
-    // this.percentMax = '';
-    // this.legendClassImc = '';
-    // this.slidePercImc = '';
     this.imcResultData = {
       imc: null,
       sliderLabel: null,
@@ -114,10 +107,32 @@ export class CreatinineComponent
   compute()
   {
     const calculator1 = new ImcCalculator();
-    const calculator2 = new CreatinineCompute();
+    const calculator2 = new CreatinineCalculator(this.formData);
+
+    console.log(this.formData);
     this.imcResultData = calculator1.compute(this.formData);
-    this.cockroftGaultResultData = calculator2.compute(this.formData);
-    console.log(this.cockroftGaultResultData);
+    this.cockroftGaultResultData = calculator2.compute();
+
+   
+
+    // this.cursorStyle = {
+    //   // color: 'pink',
+    //   left: '50%',
+    //   transition: 'all 0.5s ease-in',
+    // }
+
+    //Récupérer la valeur de this.imcResultData.sliderPercentage
+    //Tant que c'est inférieur à 45
+    //--> faire glisser le curseur jusqu'à sa valeur, en pourcentage
+    //Si c'est supérieur, faire glisser jusqu'à 45
+    let sliderPerc = this.imcResultData.sliderPercentage;
+    
+      this.cursorStyle = {
+        left: sliderPerc+'%',
+        transition: 'all 0.5s ease-in',
+      }
+    
+
   }
 
   onRadioButtonClicked(value: true|false)

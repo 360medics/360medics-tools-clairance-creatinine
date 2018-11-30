@@ -1,6 +1,6 @@
-import { round2 }               from './round2';
-import { imcSliderPercentage }  from './imc-slider-percentage';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
+import { round2 }                           from './round2';
+import { imcSliderPercentage }              from './imc-slider-percentage';
+import { analyzeAndValidateNgModules }      from '@angular/compiler';
 
 export type ImcDataType = {
     birthYear: number;
@@ -8,8 +8,8 @@ export type ImcDataType = {
     weight: number;
     height: number;
     creatinimie: number;
-    creatinimieType: 'µmol/L' | 'mg/L';
-    sex: 'H' | 'F';
+    creatinimieType: any;
+    sex: any;
     originAfro: boolean;
 }
 
@@ -19,15 +19,13 @@ export type ImcResultDataType = {
     sliderPercentage: number;
 }
 
-export class ImcCalculator
-{
-    constructor()
-    {
+export class ImcCalculator {
+
+    constructor() {
 
     }
 
-    compute(data: ImcDataType): ImcResultDataType
-    {
+    compute(data: ImcDataType): ImcResultDataType {
         let imc: any;
         let sliderLabel: string;
         let sliderPercentage: number;
@@ -36,36 +34,36 @@ export class ImcCalculator
 
         if (imc <= 16.5) {
 
-            sliderLabel = 'L1';
+            sliderLabel = 'Sous-poids';
             sliderPercentage = imcSliderPercentage(imc, 0, 16.5, 0, 14)
 
         } else if (imc <= 18.5) {
 
-            sliderLabel = 'L2';
+            sliderLabel = 'Maigreur';
             sliderPercentage = imcSliderPercentage(imc, 16.5, 18.5, 15, 21)
 
         } else if (imc <= 25) {
 
-            sliderLabel = 'L3';
+            sliderLabel = 'Normal';
             sliderPercentage = imcSliderPercentage(imc, 18.5, 25, 22, 37)
 
         } else if (imc <= 30) {
 
-            sliderLabel = 'L4';
+            sliderLabel = 'Surpoids';
             sliderPercentage = imcSliderPercentage(imc, 25, 30, 37.5, 52)
 
         } else if (imc <= 35) {
 
-            sliderLabel = 'L5';
+            sliderLabel = 'Obésité modérée';
             sliderPercentage = imcSliderPercentage(imc, 30, 35, 53, 67.5)
         } else if (imc <= 40) {
 
-            sliderLabel = 'L6';
+            sliderLabel = 'Obésité sévère';
             sliderPercentage = imcSliderPercentage(imc, 35, 40, 68.5, 83)
 
         } else if (imc > 40) {
 
-            sliderLabel = 'L7';
+            sliderLabel = 'Obésité morbide';
             sliderPercentage = imcSliderPercentage(imc, 40, 45, 84, 98)
 
         } else {
@@ -81,3 +79,5 @@ export class ImcCalculator
         }
     }
 }
+
+export const ImcCalculatorSingleton = new ImcCalculator();
