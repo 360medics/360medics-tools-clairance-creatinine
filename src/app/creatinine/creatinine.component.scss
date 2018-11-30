@@ -1,287 +1,348 @@
-.content {
-  display: flex;
-  flex-direction: column;
-}
-
-.container {
-  display: flex;
-  flex-direction: row;
-
-  .left,
-  .right {
+:host {
     display: flex;
     flex-direction: column;
-  }
-
-  label {
-    // border: 1px solid;
-    padding: 5px;
-  }
-
-  .form-control {
-    min-width: 250px;
-    background-color: #DDDFE2;
-    border-radius: 0%;
-    text-align: center;
-  }
-
-  .add-on-1 {
-    padding: 7.5px 11px;
-    background-color: #DDDFE2;
-    text-align: center;
-    margin: 1px 0px 5px -5px;
-  }
-
-  .add-on-2 {
-    padding: 7.5px 9px;
-    background-color: #DDDFE2;
-    text-align: center;
-    margin: 0px 0px 0px -5px;
-  }
-
-  .form-control-small {
-    min-width: 250px;
-    background-color: #DDDFE2;
-    border-radius: 0%;
-  }
-
-  .right-five {
-    margin-right: 5px;
-  }
-
-  input {
-    height: 39px;
-    max-width: 110px;
-    line-height: 40px;
-    margin: 1.5px 0 5px 15px;
-  }
-
-  #resize {
-    padding: 6px 12px 7px 12px;
-    margin: 2px -16px 5px 16px;
-    text-align: center;
-    border: solid 1px #DDDFE2;
-  }
-
-  button {
-    margin: 16px;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-  .btn {
-    border: none;
-    padding: 5px;
-    border-radius: 0px;
-  }
-
-  .btn-success {
-    background-color: #EF7564;
-  }
-
-  .stick {
-    padding: 6px 14px 7px 12px;
-    margin: -3px 0px 0px -5px;
-    text-align: center;
-    border: solid 1px #DDDFE2;
-  }
+    flex: 1;
 }
 
-.result-box {
-
-  .flex-row {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .separator {
-    display: block;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    margin-left: auto;
-    margin-right: auto;
-    border-style: inset;
-    border-width: 1px;
-  }
-
-  #bar {
-    display: flex;
-    flex-direction: row;
-    border: 1px solid black;
-    flex: auto;
-    position: relative;
-    max-width: 100%;
-    min-width: 100%;
-    border-radius: 30px;
-    margin: 10px 0px 10px 0px;
-  }
-
-  .case1 {
-    position: relative;
-    display: flex;
-    align-items: center;
-    background: #0004CC;
-    width: 15%;
-    border-radius: 30px 0 0 30px;
-    color: white;
-  }
-
-  .case2 {
-    position: relative;
-    display: flex;
-    align-items: center;
-    background: #77B5FE;
-    color: white;
-    width: 7%;
-  }
-
-  .case3 {
-    position: relative;
-    display: flex;
-    align-items: center;
-    background: #FFFFFF;
-    width: 15%;
-  }
-
-  .case4 {
-    position: relative;
-    display: flex;
-    align-items: center;
-    background: #D1B607;
-    width: 15%;
-  }
-
-  .case5 {
-    position: relative;
-    display: flex;
-    align-items: center;
-    background: #FF7E01;
-    width: 15%;
-  }
-
-  .case6 {
-    position: relative;
-    display: flex;
-    align-items: center;
-    background: #E73E01;
-    width: 15%;
-  }
-
-  .case7 {
-    position: relative;
-    display: flex;
-    align-items: center;
-    background: #CC0001;
-    width: 18%;
-    border-radius: 0 30px 30px 0;
-  }
-
-  .left {
-    position: absolute;
-    left: 5px;
-  }
-
-  .left-middle {
-    position: relative;
-    right: 18px;
-  }
-
-  .middle {
-    position: absolute;
-    left: -7.5px;
-  }
-
-  .right {
-    position: absolute;
-    right: 5px;
-  }
-
-  .one {
-    width: 15%;
-    text-align: center;
-  }
-
-  .two {
-    width: 7%;
-    text-align: center;
-    margin-right: 4px;
-  }
-
-  .strong {
-    font-weight: bold;
-  }
-
-}
-
-
-
-
-
-.result-box {
-  text-align: center;
-  padding-top: 20px;
-}
-
-
-
-.flex-column {
+.content {
   display: flex;
+  flex: 1;
   flex-direction: column;
 }
 
+.tool-name {
+    text-align: center;
+    margin: 16px 0px;
+}
 
-// .btn {
-//   background-color: #0004CC;
-//   color: #FFFFFF;
+.tool-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 575px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.flex-row {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+  
+  input {
+      height: 25px;
+      line-height: 25px;
+      max-width: 110px;
+      padding: 4px;
+      // margin: 1.5px 0 5px 15px;
+    }
+
+    label {
+        width: 170px;
+        padding: 6px 16px;
+        // padding: 7.5px 11px;
+        height: 25px;
+        line-height: 25px;
+        background-color: #DDDFE2;
+        text-align: center;
+        margin-right: 16px;
+    }
+
+    .add-on {
+        width: 30px;
+        padding: 6px;
+        // padding: 7.5px 11px;
+        height: 25px;
+        line-height: 25px;
+        background-color: #DDDFE2;
+        text-align: center;
+        // margin: 1px 0px 5px -5px;
+      }
+}
+
+
+
+//
+//
+//
+//   .left,
+//   .right {
+//     display: flex;
+//     flex-direction: column;
+//   }
+//
+//   label {
+//     // border: 1px solid;
+//     padding: 5px;
+//   }
+//
+//   .form-control {
+//     min-width: 250px;
+//     background-color: #DDDFE2;
+//     border-radius: 0%;
+//     text-align: center;
+//   }
+//
+//   .add-on-1 {
+//     padding: 7.5px 11px;
+//     background-color: #DDDFE2;
+//     text-align: center;
+//     margin: 1px 0px 5px -5px;
+//   }
+//
+//   .add-on-2 {
+//     padding: 7.5px 9px;
+//     background-color: #DDDFE2;
+//     text-align: center;
+//     margin: 0px 0px 0px -5px;
+//   }
+//
+//   .form-control-small {
+//     min-width: 250px;
+//     background-color: #DDDFE2;
+//     border-radius: 0%;
+//   }
+//
+//   .right-five {
+//     margin-right: 5px;
+//   }
+//
+//   input {
+//     height: 39px;
+//     max-width: 110px;
+//     line-height: 40px;
+//     margin: 1.5px 0 5px 15px;
+//   }
+//
+//   #resize {
+//     padding: 6px 12px 7px 12px;
+//     margin: 2px -16px 5px 16px;
+//     text-align: center;
+//     border: solid 1px #DDDFE2;
+//   }
+//
+//   button {
+//     margin: 16px;
+//
+//     &:hover {
+//       cursor: pointer;
+//     }
+//   }
+//
+//   .btn {
+//     border: none;
+//     padding: 5px;
+//     border-radius: 0px;
+//   }
+//
+//   .btn-success {
+//     background-color: #EF7564;
+//   }
+//
+//   .stick {
+//     padding: 6px 14px 7px 12px;
+//     margin: -3px 0px 0px -5px;
+//     text-align: center;
+//     border: solid 1px #DDDFE2;
+//   }
 // }
-
-.selected {
-  background-color: #DDDFE2;
-}
-
-
-
-
-
-// #coolDiv {
-//   width: 50px;
-//   height: 50px;
-//   // position: absolute;
-//   // right: 0;
-//   background: blue;
-//   color: white;
+//
+// .result-box {
+//
+//   .flex-row {
+//     display: flex;
+//     flex-direction: row;
+//   }
+//
+//   .separator {
+//     display: block;
+//     margin-top: 0.5em;
+//     margin-bottom: 0.5em;
+//     margin-left: auto;
+//     margin-right: auto;
+//     border-style: inset;
+//     border-width: 1px;
+//   }
+//
+//   #bar {
+//     display: flex;
+//     flex-direction: row;
+//     border: 1px solid black;
+//     flex: auto;
+//     position: relative;
+//     max-width: 100%;
+//     min-width: 100%;
+//     border-radius: 30px;
+//     margin: 10px 0px 10px 0px;
+//   }
+//
+//   .case1 {
+//     position: relative;
+//     display: flex;
+//     align-items: center;
+//     background: #0004CC;
+//     width: 15%;
+//     border-radius: 30px 0 0 30px;
+//     color: white;
+//   }
+//
+//   .case2 {
+//     position: relative;
+//     display: flex;
+//     align-items: center;
+//     background: #77B5FE;
+//     color: white;
+//     width: 7%;
+//   }
+//
+//   .case3 {
+//     position: relative;
+//     display: flex;
+//     align-items: center;
+//     background: #FFFFFF;
+//     width: 15%;
+//   }
+//
+//   .case4 {
+//     position: relative;
+//     display: flex;
+//     align-items: center;
+//     background: #D1B607;
+//     width: 15%;
+//   }
+//
+//   .case5 {
+//     position: relative;
+//     display: flex;
+//     align-items: center;
+//     background: #FF7E01;
+//     width: 15%;
+//   }
+//
+//   .case6 {
+//     position: relative;
+//     display: flex;
+//     align-items: center;
+//     background: #E73E01;
+//     width: 15%;
+//   }
+//
+//   .case7 {
+//     position: relative;
+//     display: flex;
+//     align-items: center;
+//     background: #CC0001;
+//     width: 18%;
+//     border-radius: 0 30px 30px 0;
+//   }
+//
+//   .left {
+//     position: absolute;
+//     left: 5px;
+//   }
+//
+//   .left-middle {
+//     position: relative;
+//     right: 18px;
+//   }
+//
+//   .middle {
+//     position: absolute;
+//     left: -7.5px;
+//   }
+//
+//   .right {
+//     position: absolute;
+//     right: 5px;
+//   }
+//
+//   .one {
+//     width: 15%;
+//     text-align: center;
+//   }
+//
+//   .two {
+//     width: 7%;
+//     text-align: center;
+//     margin-right: 4px;
+//   }
+//
+//   .strong {
+//     font-weight: bold;
+//   }
+//
 // }
-
-.cursorimc {
-  height: 2em;
-  /* width: 97%;
-  background-color: blueviolet; */
-  position: relative;
-  clear: both;
-}
-
-#cursor {
-  font-size: 3em;
-  color: #4bad03;
-  margin-top: -0.2em;
-  position: absolute;
-  left: 0%;
-}
-
-#cadre {
-  border: 1px solid red;
-}
-
-
-
-#blocc {
-  width: 20px;
-  height: 40px;
-  background: red;
-  position: relative;
-  /* Permettra de décaler le bloc */
-  left: 0px;
-  /* Initialise la position gauche du bloc à déplacer */
-}
+//
+//
+//
+//
+//
+// .result-box {
+//   text-align: center;
+//   padding-top: 20px;
+// }
+//
+//
+//
+// .flex-column {
+//   display: flex;
+//   flex-direction: column;
+// }
+//
+//
+// // .btn {
+// //   background-color: #0004CC;
+// //   color: #FFFFFF;
+// // }
+//
+// .selected {
+//   background-color: #DDDFE2;
+// }
+//
+//
+//
+//
+//
+// // #coolDiv {
+// //   width: 50px;
+// //   height: 50px;
+// //   // position: absolute;
+// //   // right: 0;
+// //   background: blue;
+// //   color: white;
+// // }
+//
+// .cursorimc {
+//   height: 2em;
+//   /* width: 97%;
+//   background-color: blueviolet; */
+//   position: relative;
+//   clear: both;
+// }
+//
+// #cursor {
+//   font-size: 3em;
+//   color: #4bad03;
+//   margin-top: -0.2em;
+//   position: absolute;
+//   left: 0%;
+// }
+//
+// #cadre {
+//   border: 1px solid red;
+// }
+//
+//
+//
+// #blocc {
+//   width: 20px;
+//   height: 40px;
+//   background: red;
+//   position: relative;
+//   /* Permettra de décaler le bloc */
+//   left: 0px;
+//   /* Initialise la position gauche du bloc à déplacer */
+// }

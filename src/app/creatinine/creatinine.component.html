@@ -1,10 +1,71 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
-  crossorigin="anonymous">
-
 <div class="content">
+    <h1 class="tool-name">Calcul de la clairance de la créatinine</h1>
+
+    <div class="tool-container">
+
+        <div class="flex-row">
+            <label>Année de naissance</label>
+            <input type="number" [(ngModel)]="formData.birthYear" (keyup)="setAge($event)">
+            <span class="add-on">kg</span>
+        </div>
+
+        <div class="flex-row">
+            <label class="form-control">Âge</label>
+            <input type="number" [(ngModel)]="formData.age" (keyup)="setBirthYear($event)">
+            <span class="add-on">kg</span>
+        </div>
+
+        <div class="flex-row">
+            <label class="form-control">Poids</label>
+            <input [(ngModel)]="formData.weight" type="text" class="right-five">
+            <span class="add-on">kg</span>
+        </div>
+
+        <div class="flex-row">
+            <label class="form-control">Taille</label>
+            <input [(ngModel)]="formData.height" type="text" class="right-five">
+            <span class="add-on">cm</span>
+        </div>
+
+        <div class="flex-row">
+            <label class="form-control">Créatinimie</label>
+            <input type="text" [(ngModel)]="formData.creatinimie" class="right-five">
+            <button class="stick" [ngClass]="{selected: formData.creatinimieType === 'µmol/L', btn:true}" (click)="formData.creatinimieType = 'µmol/L'">µmol/L</button>
+            <button class="stick" [ngClass]="{selected: formData.creatinimieType === 'mg/L', btn:true}" (click)="formData.creatinimieType = 'mg/L'">mg/L</button>
+        </div>
+
+        <div class="flex-row">
+            <label class="form-control">Sexe</label>
+            <button id="resize" [ngClass]="{selected: formData.sex === 'H', btn:true}" (click)="formData.sex = 'H'">Homme</button>
+            <button id="resize" [ngClass]="{selected: formData.sex === 'F', btn:true}" (click)="formData.sex = 'F'">Femme</button>
+        </div>
+
+        <div class="flex-row">
+            <label class="form-control">Origine afro-américaine</label>
+
+          <button id="resize" [ngClass]="{selected: formData.originAfro === true, btn:true}" (click)="formData.originAfro = true">Oui</button>
+          <button id="resize" [ngClass]="{selected: formData.originAfro === false, btn:true}" (click)="formData.originAfro = false">Non</button>
+        </div>
+
+        <div class="flex-row">
+          <button (click)="compute()" class="btn btn-success">Calculer</button>
+          <button (click)="reset()" class="btn btn-reset">Réinitialiser</button>
+        </div>
+
+    </div>
+
+    <div class="result-box">
+        <p>IMC : {{ imcResultData.imc }} kg/m2 <span style="color: #EF7564"> {{ imcResultData.sliderLabel }} </span></p>
+        <p>Cockroft & Gault : {{ cockroftGaultResultData.cockroftGault }} ml/min/1.72m2</p>
+        <p>MDRD : {{ cockroftGaultResultData.mdrd }} ml/min/1.72m2</p>
+    </div>
+
+</div>
+<!-- <div class="content">
 
   <h1 class="tool-name">Calcul de la clairance de la créatinine</h1>
+
+
   <div class="container">
 
     <div class="left">
@@ -59,83 +120,9 @@
 
 
 <p>IMC : {{ imcResultData.imc }} kg/m2 <span style="color: #EF7564"> {{ imcResultData.sliderLabel }} </span></p>
-    <p>Cockroft & Gault : {{ cockroftGaultResultData.cockroftGault }} ml/min/1.72m2</p>
-    <p>MDRD : {{ cockroftGaultResultData.mdrd }} ml/min/1.72m2</p>
+<p>Cockroft & Gault : {{ cockroftGaultResultData.cockroftGault }} ml/min/1.72m2</p>
+<p>MDRD : {{ cockroftGaultResultData.mdrd }} ml/min/1.72m2</p>
 
 
-    <!-- <div class="flex-row">
-      <p>IMC : </p>
-      <input type="text" value="{{ imcResultData.imc }}">
-      <p>(kg/m²)</p>
-    </div>
-
-    <div class="cursorimc">
-      <i id="cursor" class="fa fa-caret-down" [ngStyle]="cursorStyle"></i>
-    </div>
-
-    <div id="bar">
-      <div class="case1">
-        <span class="left">0</span>
-      </div>
-      <div class="case2">
-        <span class="left-middle">16,5</span>
-      </div>
-      <div class="case3">
-        <span class="left-middle">18,5</span>
-      </div>
-      <div class="case4">
-        <span class="middle">25</span>
-      </div>
-      <div class="case5">
-        <span class="middle">30</span>
-      </div>
-      <div class="case6">
-        <span class="middle">35</span>
-      </div>
-      <div class="case7">
-        <span class="middle">40</span>
-        <span class="right">>45</span>
-      </div>
-    </div>
-
-    <div class="flex-row">
-      <div [ngClass]="{strong: imcResultData.sliderLabel === 'L1'}" class="one">
-        Sous-poids
-      </div>
-      <div [ngClass]="{strong: imcResultData.sliderLabel === 'L2'}" class="two">
-        Maigreur
-      </div>
-      <div [ngClass]="{strong: imcResultData.sliderLabel === 'L3'}" class="one">
-        Normal
-      </div>
-      <div [ngClass]="{strong: imcResultData.sliderLabel === 'L4'}" class="one">
-        Surpoids
-      </div>
-      <div [ngClass]="{strong: imcResultData.sliderLabel === 'L5'}" class="one">
-        Obésité modérée
-      </div>
-      <div [ngClass]="{strong: imcResultData.sliderLabel === 'L6'}" class="one">
-        Obésité sévère
-      </div>
-      <div [ngClass]="{strong: imcResultData.sliderLabel === 'L7'}" class="one">
-        Obésité morbide
-      </div>
-    </div>
-
-    <div class="separator"></div>
-
-    <div class="flex-row">
-      <p>Cockroft & Gault :</p>
-      <input type="text" value="{{ cockroftGaultResultData.cockroftGault }}">
-      <p>(ml/min/1.73m²)</p>
-    </div>
-
-    <div class="separator"></div>
-
-    <div class="flex-row">
-      <p>MDRD :</p>
-      <input type="text" value="{{ cockroftGaultResultData.mdrd }}">
-      <p>(ml/min/1.73m²)</p>
-    </div> -->
   </div>
-</div>
+</div> -->
