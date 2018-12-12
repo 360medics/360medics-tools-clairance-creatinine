@@ -1,63 +1,64 @@
 <div class="content">
-    <h1 class="tool-name">Calcul de la clairance de la créatinine</h1>
+  <h1 class="tool-name">Calcul de la clairance de la créatinine</h1>
 
-    <div class="tool-container">
+  <div class="tool-container">
 
-        <div class="flex-row">
-            <label>Année de naissance</label>
-            <input type="number" [(ngModel)]="formData.birthYear" (keyup)="setAge($event)">
-            <span class="add-on">kg</span>
-        </div>
-
-        <div class="flex-row">
-            <label class="form-control">Âge</label>
-            <input type="number" [(ngModel)]="formData.age" (keyup)="setBirthYear($event)">
-            <span class="add-on">kg</span>
-        </div>
-
-        <div class="flex-row">
-            <label class="form-control">Poids</label>
-            <input [(ngModel)]="formData.weight" type="text" class="no-border-right">
-            <span class="add-on">kg</span>
-        </div>
-
-        <div class="flex-row">
-            <label class="form-control">Taille</label>
-            <input [(ngModel)]="formData.height" type="text" class="no-border-right">
-            <span class="add-on">cm</span>
-        </div>
-
-        <div class="flex-row">
-            <label class="form-control">Créatinimie</label>
-            <input type="text" [(ngModel)]="formData.creatinimie" class="right-five">
-            <button class="stick" [ngClass]="{selected: formData.creatinimieType === 'µmol/L', btn:true}" (click)="formData.creatinimieType = 'µmol/L'">µmol/L</button>
-            <button class="stick" [ngClass]="{selected: formData.creatinimieType === 'mg/L', btn:true}" (click)="formData.creatinimieType = 'mg/L'">mg/L</button>
-        </div>
-
-        <div class="flex-row">
-            <label class="form-control">Sexe</label>
-            <button class="switch-btn" [ngClass]="{selected: formData.sex === 'H'}" (click)="formData.sex = 'H'">Homme</button>
-            <button class="switch-btn" [ngClass]="{selected: formData.sex === 'F'}" (click)="formData.sex = 'F'">Femme</button>
-        </div>
-
-        <div class="flex-row">
-            <label class="form-control">Origine afro-américaine</label>
-            <button class="switch-btn" [ngClass]="{selected: formData.originAfro === true}" (click)="formData.originAfro = true">Oui</button>
-            <button class="switch-btn" [ngClass]="{selected: formData.originAfro === false}" (click)="formData.originAfro = false">Non</button>
-        </div>
-
-        <div class="flex-row">
-          <button (click)="compute()" class="btn btn-success">Calculer</button>
-          <button (click)="reset()" class="btn btn-reset">Réinitialiser</button>
-        </div>
-
+    <div class="flex-row">
+      <label>Année de naissance</label>
+      <input type="number" [(ngModel)]="formData.birthYear" (keyup)="setAge($event)">
+      <span class="add-on">kg</span>
     </div>
 
-    <div class="result-box">
-        <p>IMC : <b>{{ imcResultData.imc }}</b> kg/m2 <span style="color: #EF7564"> {{ imcResultData.sliderLabel }} </span></p>
-        <p>Cockroft & Gault : <b>{{ cockroftGaultResultData.cockroftGault }}</b> ml/min/1.72m2</p>
-        <p>MDRD : <b>{{ cockroftGaultResultData.mdrd }}</b> ml/min/1.72m2</p>
+    <div class="flex-row">
+      <label class="form-control">Âge</label>
+      <input type="number" [(ngModel)]="formData.age" (keyup)="setBirthYear($event)">
+      <span class="add-on">kg</span>
     </div>
+
+    <div class="flex-row">
+      <label class="form-control">Poids</label>
+      <input [(ngModel)]="formData.weight" type="text" class="no-border-right">
+      <span class="add-on">kg</span>
+    </div>
+
+    <div class="flex-row">
+      <label class="form-control">Taille</label>
+      <input [(ngModel)]="formData.height" type="text" class="no-border-right">
+      <span class="add-on">cm</span>
+    </div>
+
+    <div class="flex-row">
+      <label class="form-control">Créatinimie</label>
+      <input type="text" [(ngModel)]="formData.creatinimie">
+      <button class="switch-btn-bigger" [ngClass]="{selected: formData.creatinimieType === 'µmol/L', btn:true}" (click)="formData.creatinimieType = 'µmol/L'">µmol/L</button>
+      <button class="switch-btn-bigger" [ngClass]="{selected: formData.creatinimieType === 'mg/L', btn:true}" (click)="formData.creatinimieType = 'mg/L'">mg/L</button>
+    </div>
+
+    <div class="flex-row">
+      <label class="form-control">Sexe</label>
+      <button class="switch-btn" [ngClass]="{selected: formData.sex === 'H'}" (click)="formData.sex = 'H'">Homme</button>
+      <button class="switch-btn" [ngClass]="{selected: formData.sex === 'F'}" (click)="formData.sex = 'F'">Femme</button>
+    </div>
+
+    <div class="flex-row">
+      <label class="form-control">Origine afro-américaine</label>
+      <button class="switch-btn" [ngClass]="{selected: formData.originAfro === true}" (click)="formData.originAfro = true">Oui</button>
+      <button class="switch-btn" [ngClass]="{selected: formData.originAfro === false}" (click)="formData.originAfro = false">Non</button>
+    </div>
+
+    <div class="flex-row-center">
+      <button (click)="compute()" class="btn btn-success">Calculer</button>
+      <button (click)="reset()" class="btn btn-reset">Réinitialiser</button>
+    </div>
+
+  </div>
+
+  <div class="result-box">
+    <p><b> IMC : {{ imcResultData.imc }} </b> kg/m2 <span style="color: #c41723"> {{ imcResultData.sliderLabel }}
+      </span></p>
+    <p><b>Cockroft & Gault : {{ cockroftGaultResultData.cockroftGault }}</b> ml/min/1.72m2</p>
+    <p><b>MDRD : {{ cockroftGaultResultData.mdrd }}</b> ml/min/1.72m2</p>
+  </div>
 
 </div>
 <!-- <div class="content">
