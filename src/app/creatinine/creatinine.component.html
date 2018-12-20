@@ -1,5 +1,4 @@
 <div class="content">
-  <h1 class="tool-name">Calcul de la clairance de la créatinine</h1>
 
   <div class="tool-container">
 
@@ -61,68 +60,3 @@
   </div>
 
 </div>
-<!-- <div class="content">
-
-  <h1 class="tool-name">Calcul de la clairance de la créatinine</h1>
-
-
-  <div class="container">
-
-    <div class="left">
-      <label class="form-control">Année de naissance</label>
-      <label class="form-control">Âge</label>
-      <label class="form-control">Poids</label>
-      <label class="form-control">Taille</label>
-      <label class="form-control">Créatinimie</label>
-      <label class="form-control">Sexe</label>
-      <label class="form-control">Origine afro-américaine</label>
-    </div>
-
-    <div class="right">
-      <input type="number" [(ngModel)]="formData.birthYear" (keyup)="setAge($event)">
-      <input type="number" [(ngModel)]="formData.age" (keyup)="setBirthYear($event)">
-
-      <div class="flex-row">
-        <input [(ngModel)]="formData.weight" type="text" class="right-five">
-        <label class="add-on-1">kg</label>
-      </div>
-
-      <div class="flex-row">
-        <input [(ngModel)]="formData.height" type="text" class="right-five">
-        <label class="add-on-2">cm</label>
-      </div>
-
-      <div class="flex-row">
-        <input type="text" [(ngModel)]="formData.creatinimie" class="right-five">
-          <button class="stick" [ngClass]="{selected: formData.creatinimieType === 'µmol/L', btn:true}" (click)="formData.creatinimieType = 'µmol/L'">µmol/L</button>
-          <button class="stick" [ngClass]="{selected: formData.creatinimieType === 'mg/L', btn:true}" (click)="formData.creatinimieType = 'mg/L'">mg/L</button>
-      </div>
-
-      <div class="flex-row">
-          <button id="resize" [ngClass]="{selected: formData.sex === 'H', btn:true}" (click)="formData.sex = 'H'">Homme</button>
-          <button id="resize" [ngClass]="{selected: formData.sex === 'F', btn:true}" (click)="formData.sex = 'F'">Femme</button>
-      </div>
-
-      <div class="flex-row">
-        <button id="resize" [ngClass]="{selected: formData.originAfro === true, btn:true}" (click)="formData.originAfro = true">Oui</button>
-        <button id="resize" [ngClass]="{selected: formData.originAfro === false, btn:true}" (click)="formData.originAfro = false">Non</button>
-      </div>
-
-      <div class="flex-row">
-        <button (click)="compute()" class="btn btn-success">Calculer</button>
-        <button (click)="reset()" class="btn btn-reset">Réinitialiser</button>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="result-box">
-
-
-<p>IMC : {{ imcResultData.imc }} kg/m2 <span style="color: #EF7564"> {{ imcResultData.sliderLabel }} </span></p>
-<p>Cockroft & Gault : {{ cockroftGaultResultData.cockroftGault }} ml/min/1.72m2</p>
-<p>MDRD : {{ cockroftGaultResultData.mdrd }} ml/min/1.72m2</p>
-
-
-  </div>
-</div> -->

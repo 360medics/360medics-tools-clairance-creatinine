@@ -24,14 +24,14 @@ export class CreatinineComponent
   cockroftGaultResultData: Model.CreatinineResultDataType;
 
   public formData: ImcDataType = {
-    birthYear: 1985,
-    age: 33,
-    weight: 65,
-    height: 194,
-    creatinimie: 12,
-    creatinimieType: 'µmol/L',
-    sex: 'H',
-    originAfro: false,
+    birthYear: null,
+    age: null,
+    weight: null,
+    height: null,
+    creatinimie: null,
+    creatinimieType: null,
+    sex: null,
+    originAfro: null,
   }
 
   cockroftGault: null;

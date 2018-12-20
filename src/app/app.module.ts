@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 //Components
 import { CreatinineComponent } from './creatinine/creatinine.component';
 import { ButtonComponent } from './components/button/button.component';
-import { CheckboxComponent, InputComponent, RadioComponent, TextareaComponent } from './components/form';
+import { InputComponent, TextareaComponent } from './components/form';
 import { FormsModule }   from '@angular/forms';
 
 @NgModule({
@@ -15,9 +15,7 @@ import { FormsModule }   from '@angular/forms';
     AppComponent,
     CreatinineComponent,
     ButtonComponent,
-    CheckboxComponent,
     InputComponent,
-    RadioComponent,
     TextareaComponent,
   ],
   imports: [
