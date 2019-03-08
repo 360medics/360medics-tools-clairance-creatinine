@@ -4,14 +4,12 @@
 
     <div class="flex-row">
       <label>Année de naissance</label>
-      <input type="number" [(ngModel)]="formData.birthYear" (keyup)="setAge($event)">
-      <span class="add-on">kg</span>
+      <input type="number" [(ngModel)]="formData.birthYear" (keyup)="setAge($event)" class="large">
     </div>
 
     <div class="flex-row">
       <label class="form-control">Âge</label>
-      <input type="number" [(ngModel)]="formData.age" (keyup)="setBirthYear($event)">
-      <span class="add-on">kg</span>
+      <input type="number" [(ngModel)]="formData.age" (keyup)="setBirthYear($event)" class="large">
     </div>
 
     <div class="flex-row">
