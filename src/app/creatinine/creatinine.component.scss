@@ -37,7 +37,6 @@
   display: flex;
   flex: 1;
   flex-direction: row;
-  align-items: center;
   margin-bottom: 16px;
   flex-shrink: 0;
 
@@ -95,13 +94,12 @@ button {
 .switch-btn-bigger {
   text-align: center;
   border: solid 1px #DDDFE2 !important;
-  padding: 9.1px !important;
+  padding: 6.1px !important;
 
   &.selected {
     background-color: #DDDFE2;
   }
 }
-
 
 .btn {
   border: none;
@@ -124,11 +122,41 @@ button {
 .result-box {
   display: block;
   width: 100%;
-  text-align: center;
-  padding-top: 20px;
-  min-width: 420px;
+  padding-top: 10px;
 }
 
 .large {
   width: 91px !important;
+}
+
+
+@media screen and (max-width: 568px) {
+  //.result-box {
+  //  text-align: center;
+  //}
+
+  label {
+    margin-left: 0 !important;
+  }
+
+  .tool-container {
+    margin-left: 0;
+  }
+
+  .flex-row-center {
+    padding-left: 23px;
+  }
+
+  .large {
+    width: 33px !important;
+  }
+
+  .flex-row input {
+    width: 33px;
+  }
+
+  .flex-row label {
+    width: 147px;
+    padding: 6px 3px;
+  }
 }

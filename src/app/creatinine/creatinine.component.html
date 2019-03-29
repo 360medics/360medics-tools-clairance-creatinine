@@ -14,19 +14,19 @@
 
     <div class="flex-row">
       <label class="form-control">Poids</label>
-      <input [(ngModel)]="formData.weight" type="text" class="no-border-right">
+      <input [(ngModel)]="formData.weight" type="number" class="no-border-right">
       <span class="add-on">kg</span>
     </div>
 
     <div class="flex-row">
       <label class="form-control">Taille</label>
-      <input [(ngModel)]="formData.height" type="text" class="no-border-right">
+      <input [(ngModel)]="formData.height" type="number" class="no-border-right">
       <span class="add-on">cm</span>
     </div>
 
     <div class="flex-row">
       <label class="form-control">Créatinimie</label>
-      <input type="text" [(ngModel)]="formData.creatinimie">
+      <input type="number" [(ngModel)]="formData.creatinimie">
       <button class="switch-btn-bigger" [ngClass]="{selected: formData.creatinimieType === 'µmol/L', btn:true}" (click)="formData.creatinimieType = 'µmol/L'">µmol/L</button>
       <button class="switch-btn-bigger" [ngClass]="{selected: formData.creatinimieType === 'mg/L', btn:true}" (click)="formData.creatinimieType = 'mg/L'">mg/L</button>
     </div>
